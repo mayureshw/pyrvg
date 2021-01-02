@@ -13,7 +13,7 @@ Disclaimer: This software is not based on any official driver. Please use at you
 # Usage
 
 Connect the Carestream RVG 5200 USB device to USB port
-Run the program rvg5200.py. If it works (see open issues) it should produce an image file with name rvg.png
+Run the program rvg5200.py and wait till it says 'Ready to shoot', then shoot the X ray. If it works (see open issues) it should produce an image file with name rvg.png
 
 # Open issues:
 
