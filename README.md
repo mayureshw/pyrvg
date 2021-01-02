@@ -25,7 +25,7 @@ Run the program rvg5200.py. If it works (see open issues) it should produce an i
 
 # For advanced users only : if you have exactly the same device but it does not work
 
-- These instructions assume you have carestream software installed on a windows virtual machine running on Linux. It is possible to produce the desired files (essentially files dev1init and dev2init produced at the end of these instructions) on a Windows computer, but the instructions would vary slightly. If you are able to produce these files on Windows, please consider contributing the instructions to this package.
+- These instructions assume you have a working carestream software installed on a windows virtual machine running on Linux. It is possible to produce the desired files (essentially files dev1init and dev2init produced at the end of these instructions) directly on a Windows computer, but the instructions would vary slightly. If you are able to produce these files on Windows, please consider contributing the instructions to this package.
 - Familiarize yourself a bit with usbmon if you are already not. Get this usbmon pacakage (as the stock usbmon has a data truncation issue): https://github.com/swetland/usbmon. Build this package, which typically involves merely running make.
 - Do 'modprobe usbmon' to enable usb monitoring
 - Begin this exercise as a clean slate, that is when since last reboot the device has not yet been connected to the computer and carestream application has not been run.
