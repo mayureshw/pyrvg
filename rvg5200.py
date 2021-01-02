@@ -4,13 +4,6 @@ import usb.core
 import sys
 import time
 
-# stock usbmon produces truncated text results, hence we use the following usbmon
-# https://github.com/swetland/usbmon
-# Do provide the bus and device args as we do not have the filtering logic here.
-# e.g. -b1 -d7 (mind not leaving a gap after the letter)
-# The bus and device id and playback need not be same as we ignore that part of
-# the trace when playing back.
-
 # TODO: Provide a CLI option to set dbg
 dbg = False
 
