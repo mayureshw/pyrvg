@@ -84,10 +84,14 @@ class trophyrvg(usbdev):
     height = 1562
     depth = 12
     bytsperpixel = 2
+    pixel_size = 19 # micrometer
+    linepairs_permm = 16
+    #pixels_per_meter = int( pow(10,6) / pixel_size )
+    pixels_per_meter = 2 * linepairs_permm * pow(10,3)
     bufsz = width * height * bytsperpixel
     maxpxlval = (1<<depth) - 1
     def _play_Ii(self):
-        try: self.dev.read(intrport,2)
+        try: self.dev.read(self.intrport,2)
         except Exception as e: pdbg('playIibg:',e)
     def play_Ii(self,args,ed):
         pdbg('Playing Ii in bg',args,ed)
@@ -103,19 +107,22 @@ class trophyrvg(usbdev):
             height = self.height,
             greyscale = True,
             bitdepth = self.depth,
+            x_pixels_per_unit = self.pixels_per_meter,
+            y_pixels_per_unit = self.pixels_per_meter,
+            unit_is_meter = True,
             ).write(fp,arr2d)
     def shoot(self,opfile='rvg.png'):
         # TODO: For unknown reason this is to be done twice, but check if once also works
         for i in range(2):
             while True:
                 try:
-                    ret = self.dev.read(intrport,2)
+                    ret = self.dev.read(self.intrport,2)
                     pdbg('intr resp',ret)
                     break
                 except Exception as e:
                     print('Ready to shoot...')
         # TODO: Will the reads be always 2 is not known, no issues seen till now
-        buf = self.dev.read(bulkinport,self.bufsz) + self.dev.read(bulkinport,self.bufsz)
+        buf = self.dev.read(self.bulkinport,self.bufsz) + self.dev.read(self.bulkinport,self.bufsz)
         self.buf2img(buf,opfile)
     def __init__(self):
         self.bgthread = Thread(target=self._play_Ii)
