@@ -84,10 +84,17 @@ class trophyrvg(usbdev):
     height = 1562
     depth = 12
     bytsperpixel = 2
-    pixel_size = 19 # micrometer
-    linepairs_permm = 16
-    #pixels_per_meter = int( pow(10,6) / pixel_size )
-    pixels_per_meter = 2 * linepairs_permm * pow(10,3)
+
+    # pixel size spec doesn't help get correct calibration
+    # pixel_size = 19 # micrometer
+    # pixels_per_meter = int( pow(10,6) / pixel_size )
+
+    # line pairs spec doesn't help get correct calibration
+    # linepairs_permm = 16
+    # pixels_per_meter = 2 * linepairs_permm * pow(10,3)
+
+    # worked out from jpeg header of image exported on windows and confirmed that with x ray of a coin
+    pixels_per_meter = 52598
     bufsz = width * height * bytsperpixel
     maxpxlval = (1<<depth) - 1
     def _play_Ii(self):
