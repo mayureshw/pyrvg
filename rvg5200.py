@@ -82,7 +82,9 @@ class trophyrvg(usbdev):
     bulkinport = 0x82
     width = 1168
     height = 1562
-    depth = 12
+    sensordepth = 12
+    depth = 8
+    concedebits = sensordepth - depth
     bytsperpixel = 2
 
     # pixel size spec doesn't help get correct calibration
@@ -105,7 +107,9 @@ class trophyrvg(usbdev):
         self.bgthread.start()
         pdbg('launched in bg')
     def buf2img(self,buf,opfile):
-        negbuf = [ self.maxpxlval - v[0] for v in struct.iter_unpack('<H',buf) ]
+        negbuf = [ self.maxpxlval - ( v[0] >> self.concedebits )
+            for v in struct.iter_unpack('<H',buf)
+            ]
         arr2d = [ negbuf[ i : i + self.width ]
             for r in range(self.height) for i in [ r * self.width ]
             ]
@@ -130,6 +134,8 @@ class trophyrvg(usbdev):
                     print('Ready to shoot...')
         # TODO: Will the reads be always 2 is not known, no issues seen till now
         buf = self.dev.read(self.bulkinport,self.bufsz) + self.dev.read(self.bulkinport,self.bufsz)
+        if(dbg):
+            with open('raw.rvg','w') as fp: buf.tofile(fp)
         self.buf2img(buf,opfile)
     def __init__(self):
         self.bgthread = Thread(target=self._play_Ii)
