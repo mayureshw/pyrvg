@@ -134,8 +134,8 @@ class trophyrvg(usbdev):
                     print('Ready to shoot...')
         # TODO: Will the reads be always 2 is not known, no issues seen till now
         buf = self.dev.read(self.bulkinport,self.bufsz) + self.dev.read(self.bulkinport,self.bufsz)
-        if(dbg):
-            with open('raw.rvg','w') as fp: buf.tofile(fp)
+        if(True): # TODO: Later on make it if(dbg)
+            with open('raw.rvg','wb') as fp: buf.tofile(fp)
         self.buf2img(buf,opfile)
     def __init__(self):
         self.bgthread = Thread(target=self._play_Ii)
