@@ -83,7 +83,7 @@ class trophyrvg(usbdev):
     width = 1168
     height = 1562
     sensordepth = 12
-    depth = 8
+    depth = 12 # Can set to 8 as screen's pixel depth is typically 8, but transformations may benefit from 12
     concedebits = sensordepth - depth
     bytsperpixel = 2
 
