@@ -51,3 +51,5 @@ Disclaimer: This software is not based on any official driver. Please use at you
 - Use the script supplied with this package usbmonfilt.sh (see its usage message). Filter out the first device's usbmon trace into a file 'dev1init' and the second device's trace into 'dev2init' overwriting the stock files with same names supplied with this package.
 
 - Try the usage instructions now.
+
+- NOTE: If your purpose is to just do the above i.e. to produce dev1init and dev2init files, the above usbmon utility is good enough. However if you want to explore the image data exchanged over USB, you will need to increase the character buffer length from 4096 to 8192 in the usbmon.c and recompile it.
