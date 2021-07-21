@@ -52,4 +52,4 @@ Disclaimer: This software is not based on any official driver. Please use at you
 
 - Try the usage instructions now.
 
-- NOTE: If your purpose is to just do the above i.e. to produce dev1init and dev2init files, the above usbmon utility is good enough. However if you want to explore the image data exchanged over USB, you will need to increase the character buffer length from 4096 to 8192 in the usbmon.c and recompile it.
+- NOTE: If your purpose is to just do the above i.e. to produce dev1init and dev2init files, the above usbmon utility is good enough. However if you want to explore the image data exchanged over USB, you will need to increase the character buffer length from 4096 to 65536 in the usbmon.c and recompile it.

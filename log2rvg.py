@@ -1,7 +1,7 @@
 # Utility for development purpose, to covert a usbmon log, filtered for the
 # trophy device to a raw image buffer, for example to compare the raw data with
 # the same gathered from proprietary software. (For usbmon details see README.
-# Make sure to use a buffer length of at least 8192 in usbmon.c)
+# Make sure to use a buffer length of 65536 in usbmon.c)
 
 import sys
 from rvg5200 import trophyrvg
