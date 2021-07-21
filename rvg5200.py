@@ -106,6 +106,7 @@ class trophyrvg(usbdev):
         pdbg('Playing Ii in bg',args,ed)
         self.bgthread.start()
         pdbg('launched in bg')
+    @classmethod
     def buf2img(self,buf,opfile):
         negbuf = [ self.maxpxlval - ( v[0] >> self.concedebits )
             for v in struct.iter_unpack('<H',buf)
