@@ -111,7 +111,7 @@ class trophyrvg(usbdev):
         negbuf = [ self.maxpxlval - ( v[0] >> self.concedebits )
             for v in struct.iter_unpack('<H',buf)
             ]
-        arr2d = [ negbuf[ i : i + self.width ]
+        arr2d = [ list(reversed(negbuf[ i : i + self.width ]))
             for r in range(self.height) for i in [ r * self.width ]
             ]
         with open(opfile,'wb') as fp: png.Writer(
